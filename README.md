@@ -4,5 +4,5 @@ This repo contains the course's technical material. It is to be used only by the
 
 For full interactive content access
 
-https://NONE.github.io/NONE/
+https://rramosp.github.io/TEST_COURSE/
 
