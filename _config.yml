@@ -4,7 +4,7 @@ author: YOUR NAME / YOUR INSTITUTION
 logo: content/local/imgs/rlxmooc_logo-black.png
 
 repository:
-   url: https://github.com/[NOT SET]
+   url: https://github.com/rramosp/TEST_COURSE
    branch: main
 
 launch_buttons:

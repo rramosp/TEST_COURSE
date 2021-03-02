@@ -1,6 +1,6 @@
 # ------ COURSE PARAMS ------
 course_id = 'TEST_COURSE'
-github_repo = '[NOT SET]'
+github_repo = 'rramosp/TEST_COURSE'
 endpoint = 'https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc'
 # ------ COURSE PARAMS ------
 
