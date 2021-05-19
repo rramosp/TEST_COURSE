@@ -1,10 +1,8 @@
-# ------ COURSE PARAMS ------
 course_id = 'TEST_COURSE'
-github_repo = 'rramosp/TEST_COURSE'
+github_id = 'TEST_COURSE'
+github_repo = 'rramosp/%s'%github_id
+zip_file_url="https://github.com/%s/archive/main.zip"%github_repo
 endpoint = 'https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc'
-# ------ COURSE PARAMS ------
-
-zip_file_url ="https://github.com/%s/archive/main.zip"%github_repo
 #endpoint = 'http://localhost:5000/rlxmooc'
 
 def get_last_modif_date(localdir):
@@ -22,7 +20,7 @@ def init(force_download=False):
 
     if force_download or not os.path.exists("local"):
         print("replicating local resources")
-        dirname = github_repo.split("/")[-1]+"-main/"
+        dirname = github_id+"-main/"
         if os.path.exists(dirname):
             shutil.rmtree(dirname)
         r = requests.get(zip_file_url)
@@ -30,14 +28,12 @@ def init(force_download=False):
         z.extractall()
         if os.path.exists("local"):
             shutil.rmtree("local")
-        if os.path.exists(dirname+"/content/local"):
-            shutil.move(dirname+"/content/local", "local")
-        elif os.path.exists(dirname+"/local"):
-            shutil.move(dirname+"/local", "local")
+        shutil.move(dirname+"/content/local", "local")
         shutil.rmtree(dirname)
 
 def get_weblink():
     from IPython.display import HTML
+    print ("endpoint", endpoint)
     return HTML("<h3>See <a href='"+endpoint+"/web/login' target='_blank'>my courses and progress</a></h2>")
 
 def install_sourcedefender():
@@ -50,13 +46,13 @@ def install_sourcedefender():
         print('Sourcedefender installation failed, returning')
         print(STDOUT_RED_COLOR + output.stderr.decode('ASCII') + STDOUT_RESET_COLOR)
     else:
-        print('encryption enabled')
+       print('encryption enabled')
 
 
 import requests, zipfile, io, os, shutil, subprocess
-try:
-    import sourcedefender
-except ModuleNotFoundError:
-    install_sourcedefender()
-    import sourcedefender
+#try:
+#    import sourcedefender
+#except ModuleNotFoundError:
+#    install_sourcedefender()
+#    import sourcedefender
 
